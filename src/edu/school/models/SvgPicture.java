@@ -10,14 +10,18 @@ public class SvgPicture {
 	private int index;
 
 	public SvgPicture() {
-		objects = new SvgObject[20];
+		objects = new SvgObject[3];
 		index = 0;
 	}
 
 	public void add(SvgObject object) {
 		if (object != null) {
 			if (index >= objects.length) {
-				// extend the array of objects
+				SvgObject[] updatedObjects = new SvgObject[objects.length + 1];
+				for (int innerIndex = 0; innerIndex < objects.length; innerIndex++) {
+					updatedObjects[innerIndex] = objects[innerIndex];
+				}
+				objects = updatedObjects;
 			}
 			objects[index] = object;
 			index++;
